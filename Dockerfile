@@ -8,7 +8,7 @@ RUN cd /tmp \
     && rm -f ./stubby.yml
 
 # install stubby
-RUN sudo apt-get install stubby
+RUN sudo apt-get -y install stubby
 
 # run stubby in background
 RUN sudo stubby -g
