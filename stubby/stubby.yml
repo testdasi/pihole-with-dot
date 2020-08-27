@@ -117,7 +117,7 @@ idle_timeout: 10000
 # and IPv6. It will listen on port 53 by default. Use <IP_address>@<port> to
 # specify a different port
 listen_addresses:
-  - 127.0.1.1@853
+  - 127.2.2.2@5253
 #  - 0::1
 
 ############################### DNSSEC SETTINGS ################################
