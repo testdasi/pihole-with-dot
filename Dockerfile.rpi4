@@ -8,4 +8,4 @@ RUN /bin/bash /install.sh \
     && rm -f /install.sh
 
 # run stubby in background
-CMD sudo stubby -g
+CMD sudo stubby -g -C /etc/stubby/stubby.yml
