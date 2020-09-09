@@ -1,11 +1,11 @@
-FROM testdasi/pihole-base-buster-plus:latest
+FROM testdasi/pihole-base-buster-plus:latest-amd64
 
 # install stubby config
 ADD stubby /tmp
-RUN cd /tmp \
-    && mkdir -p /etc/stubby \
-    && cp -n ./stubby.yml /etc/stubby/ \
-    && rm -f ./stubby.yml
+
+COPY ./install.sh /
+RUN /bin/bash /install.sh \
+    && rm -f /install.sh
 
 # run stubby in background
-CMD sudo stubby -g
+CMD sudo stubby -g -C /etc/stubby/stubby.yml
