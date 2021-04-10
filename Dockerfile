@@ -1,4 +1,4 @@
-FROM testdasi/pihole-base-buster-plus:latest-amd64
+FROM testdasi/pihole-base-buster-plus:latest
 
 # install stubby config
 ADD stubby /tmp
