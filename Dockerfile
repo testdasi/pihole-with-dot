@@ -1,5 +1,3 @@
-FROM testdasi/pihole-base-buster-plus:latest
-
 ARG FRM='testdasi/pihole-base-buster-plus'
 ARG TAG='latest'
 
