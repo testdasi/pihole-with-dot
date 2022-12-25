@@ -6,11 +6,8 @@ cd /tmp \
     && cp -n ./stubby.yml /etc/stubby/ \
     && rm -f ./stubby.yml
 
-# run stubby as service
-mkdir -p /etc/services.d/stubby \
-    && echo '#!/usr/bin/with-contenv bash' > /etc/services.d/stubby/run \
-    && echo 's6-echo "Starting stubby"' >> /etc/services.d/stubby/run \
-    && echo 'stubby -C /etc/stubby/stubby.yml' >> /etc/services.d/stubby/run \
-    && echo '#!/usr/bin/with-contenv bash' > /etc/services.d/stubby/finish \
-    && echo 's6-echo "Stopping stubby"' >> /etc/services.d/stubby/finish \
-    && echo 'killall -9 stubby' >> /etc/services.d/stubby/finish
+## Piggy-backing on Pihole service ##
+# Insert run lines below the call capsh comment
+sed -i "/^# Call capsh with the detected capabilities/a stubby -g -C \/etc\/stubby\/stubby.yml" /etc/s6-overlay/s6-rc.d/pihole-FTL/run
+# Insert finish lines above kill pihole
+sed -i "/^killall -15 pihole-FTL/i killall -15 stubby" /etc/s6-overlay/s6-rc.d/pihole-FTL/finish
